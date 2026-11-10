@@ -63,6 +63,10 @@
   </a>
 </div>
 <script>
+if (window.self !== window.top) {
+  var b = document.getElementById('nk-vip-bar');
+  if (b) b.style.display = 'none';
+}
 document.addEventListener('submit', function(e) {
   e.preventDefault();
   alert('Demo Mode Active for Crown Roofers:\n\nOnce your new website goes live, every customer enquiry submitted here is delivered straight to your email AND instantaneously to your phone via our Instant Telegram Lead Bot!');
