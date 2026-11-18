@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>2-Minute Website Setup (£0 Upfront) | Croft Web Studio</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111827;
+      --surface: #0f172a;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --ok: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 70px;
+    }
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 17, 32, 0.94);
+      padding: 15px 20px;
+    }
+    .topbar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+    .badge-c {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: var(--surface);
+      border: 1px solid #334155;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      position: relative;
+    }
+    .badge-c::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      border-radius: 1px;
+    }
+    .pill-zero {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 5px 11px;
+      border-radius: 999px;
+    }
+    main {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 18px;
+    }
+    .hero {
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 1.75rem;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .steps-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+    @media (max-width: 620px) { .steps-bar { grid-template-columns: 1fr; } }
+    .step-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+    }
+    .step-chip strong { color: #fff; display: block; margin-bottom: 2px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .country-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .country-btn {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .country-btn.active {
+      background: rgba(37, 99, 235, 0.18);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 620px) { .grid-2 { grid-template-columns: 1fr; } }
+    .field { margin-bottom: 15px; }
+    label.lbl {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: 9px;
+      border: 1px solid #334155;
+      background: var(--surface);
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .radio-group {
+      display: grid;
+      gap: 10px;
+    }
+    .radio-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 11px;
+      border: 1px solid #334155;
+      background: var(--surface);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .radio-card:hover { border-color: #475569; }
+    .radio-card input { margin-top: 4px; accent-color: var(--accent); transform: scale(1.15); }
+    .radio-card.selected {
+      border-color: var(--accent);
+      background: rgba(37, 99, 235, 0.1);
+    }
+    .pkg-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.96rem;
+    }
+    .pkg-price { color: #60a5fa; font-weight: 800; white-space: nowrap; }
+    .pkg-desc { font-size: 0.86rem; color: var(--muted); margin-top: 3px; }
+    .upsell-box {
+      margin-top: 12px;
+      padding: 13px 15px;
+      border-radius: 10px;
+      border: 1px dashed #3b82f6;
+      background: rgba(37, 99, 235, 0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      cursor: pointer;
+    }
+    .upsell-box input { margin-top: 4px; accent-color: var(--accent); transform: scale(1.15); }
+    .included-note {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #34d399;
+      display: none;
+    }
+    .check-list { display: grid; gap: 11px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 0.87rem;
+      color: #cbd5e1;
+      cursor: pointer;
+    }
+    .check-item input { margin-top: 3px; accent-color: var(--accent); transform: scale(1.12); flex-shrink: 0; }
+    .submit-btn {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 11px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.03rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s;
+      margin-top: 18px;
+    }
+    .submit-btn:hover { background: var(--accent-hover); }
+    .submit-btn:disabled { opacity: 0.6; cursor: wait; }
+    .success-panel {
+      display: none;
+      background: var(--card);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 16px;
+      padding: 30px 26px;
+    }
+    .summary-pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      margin: 16px 0;
+    }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .sec-btn {
+      background: var(--surface);
+      color: #fff;
+      border: 1px solid #334155;
+      padding: 9px 15px;
+      border-radius: 8px;
+      font-size: 0.87rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    footer {
+      max-width: 760px;
+      margin: 26px auto 0;
+      padding: 0 18px;
+      text-align: center;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+    footer a { color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="https://preview.nexuski.store/" class="brand">
+      <span class="badge-c">C</span>
+      <span>Croft Web Studio</span>
+    </a>
+    <span class="pill-zero">0 Upfront Today &middot; Pay After Approval</span>
+  </div>
+</div>
+
+<main>
+  <div class="hero">
+    <h1>Start Your Live Website Build</h1>
+    <p style="color:var(--muted);font-size:0.96rem;">Takes 2 minutes. Nothing is paid today. I will build your complete live website within 48 to 72 hours so you can review and approve every detail on your phone before paying a single penny.</p>
+    <div class="steps-bar">
+      <div class="step-chip"><strong>1. Fill Brief (0 Today)</strong>Choose your setup &amp; quote email below.</div>
+      <div class="step-chip"><strong>2. Review in 48 to 72h</strong>Inspect your finished site &amp; request any tweaks.</div>
+      <div class="step-chip"><strong>3. Approve &amp; Go Live</strong>Pay securely via Stripe right before domain switch.</div>
+    </div>
+  </div>
+
+  <form id="onboardForm">
+    <!-- REGION & PACKAGE -->
+    <div class="card">
+      <div class="section-title">
+        <span>1. Select Your Region &amp; Website Package</span>
+      </div>
+      <div class="country-tabs" id="countryTabs">
+        <button type="button" class="country-btn active" data-region="UK">UK (&pound; GBP)</button>
+        <button type="button" class="country-btn" data-region="US">USA ($ USD)</button>
+        <button type="button" class="country-btn" data-region="CA">Canada (CA$)</button>
+        <button type="button" class="country-btn" data-region="AU">Australia (A$)</button>
+        <button type="button" class="country-btn" data-region="IE">Ireland (&euro; EUR)</button>
+      </div>
+
+      <div class="radio-group" id="pkgGroup">
+        <label class="radio-card selected" id="cardStarter">
+          <input type="radio" name="package" value="starter" checked>
+          <div style="width:100%;">
+            <div class="pkg-head">
+              <span>Starter Single Page Website</span>
+              <span class="pkg-price" id="priceStarter">&pound;350 one time</span>
+            </div>
+            <div class="pkg-desc">High converting mobile &amp; desktop single page site using your real photos, tap to call buttons, quote form, and safe domain connection. Paid only after approval.</div>
+          </div>
+        </label>
+
+        <label class="radio-card" id="cardMulti">
+          <input type="radio" name="package" value="multi">
+          <div style="width:100%;">
+            <div class="pkg-head">
+              <span>Full Multi Page Website (Most Popular)</span>
+              <span class="pkg-price" id="priceMulti">&pound;890 one time</span>
+            </div>
+            <div class="pkg-desc">Complete multi page company site (Home, Services, Projects/Gallery, About, Contact) + <strong>Instant Mobile Lead Alert System included FREE</strong>. Paid only after approval.</div>
+          </div>
+        </label>
+      </div>
+
+      <label class="upsell-box" id="upsellBox">
+        <input type="checkbox" id="addLeadBot">
+        <div>
+          <strong style="color:#fff;font-size:0.9rem;">Add Instant Mobile Lead Alert System (<span id="priceBot">+&pound;149 one time</span>)</strong>
+          <div style="font-size:0.83rem;color:var(--muted);">Get every website quote enquiry pushed to your phone in 2 seconds with a 1 tap callback button so you beat competitors to the job.</div>
+        </div>
+      </label>
+      <div class="included-note" id="botIncludedNote">&#10003; Instant Mobile Lead Alert System is included FREE with your selection!</div>
+    </div>
+
+    <!-- HOSTING & CARE -->
+    <div class="card">
+      <div class="section-title"><span>2. Hosting &amp; Ongoing Care Preference (After Launch)</span></div>
+      <div class="radio-group">
+        <label class="radio-card selected" id="cardCareManaged">
+          <input type="radio" name="care" value="managed" checked>
+          <div style="width:100%;">
+            <div class="pkg-head">
+              <span>Hands Off Managed Care &amp; Hosting Plan</span>
+              <span class="pkg-price" id="priceCare">&pound;59/mo</span>
+            </div>
+            <div class="pkg-desc">We host, secure, and maintain everything for you, including small text/photo updates whenever you message us + <strong>Instant Mobile Lead Alerts included FREE</strong>. (6 month initial term, then cancel anytime with 100% free ownership transfer guarantee).</div>
+          </div>
+        </label>
+
+        <label class="radio-card" id="cardCareSelf">
+          <input type="radio" name="care" value="self">
+          <div style="width:100%;">
+            <div class="pkg-head">
+              <span>Self Managed (100% Project Transfer to Your Account)</span>
+              <span class="pkg-price">0/mo to us</span>
+            </div>
+            <div class="pkg-desc">After your one time build payment, we transfer 100% ownership into your own free Framer account (you cover standard ~&pound;10/mo platform hosting directly).</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- BUSINESS DETAILS -->
+    <div class="card">
+      <div class="section-title"><span>3. Your Business &amp; Contact Details</span></div>
+      <div class="grid-2">
+        <div class="field">
+          <label class="lbl">Business / Trading Name *</label>
+          <input type="text" id="bizName" placeholder="e.g. Oakwood Driveways Ltd" required>
+        </div>
+        <div class="field">
+          <label class="lbl">Current Website or Facebook Page URL *</label>
+          <input type="text" id="bizUrl" placeholder="e.g. oakwooddriveways.co.uk" required>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label class="lbl">Your Name *</label>
+          <input type="text" id="contactName" placeholder="e.g. Paul Smith" required>
+        </div>
+        <div class="field">
+          <label class="lbl">Best Mobile Number (for preview updates) *</label>
+          <input type="tel" id="contactPhone" placeholder="e.g. 07700 900123" required>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label class="lbl">Email Where Customer Quote Enquiries Should Go *</label>
+          <input type="email" id="quoteEmail" placeholder="e.g. info@oakwooddriveways.co.uk" required>
+        </div>
+        <div class="field">
+          <label class="lbl">Where Is Your Domain Registered? (No passwords!)</label>
+          <input type="text" id="registrar" placeholder="e.g. GoDaddy, 123 Reg, IONOS, Namecheap, Not sure">
+        </div>
+      </div>
+
+      <div class="field" id="ieVatField" style="display:none;">
+        <label class="lbl" style="color:#60a5fa;">Irish / EU VAT Number (Required for EU B2B Reverse Charge) *</label>
+        <input type="text" id="ieVat" placeholder="e.g. IE1234567FA">
+      </div>
+
+      <div class="field">
+        <label class="lbl">Company Reg / VAT Number (if applicable) &amp; Any Specific Text/Service Tweaks</label>
+        <textarea id="notes" rows="3" placeholder="Optional: List any services to highlight, areas you cover, company number for the footer, or changes to the preview..."></textarea>
+      </div>
+    </div>
+
+    <!-- AGREEMENTS -->
+    <div class="card">
+      <div class="section-title"><span>4. Quick Confirmations (0 Paid Today)</span></div>
+      <div class="check-list">
+        <label class="check-item">
+          <input type="checkbox" required>
+          <span><strong>Commercial B2B Client:</strong> I confirm I am ordering exclusively for a commercial business or trade (B2B), not as a private consumer.</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" required>
+          <span><strong>Zero Upfront &amp; Payment Timing:</strong> I understand nothing is paid today. Build time is 48 to 72 hours, and payment via Stripe is due once I approve the finished staging website, right before domain connection or project transfer.</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" required>
+          <span><strong>Safe Email DNS &amp; Care Plan Terms:</strong> I understand my existing business emails (MX records) will remain untouched. If I chose the Monthly Care Plan, I agree to the 6 month initial term (monthly cancellable thereafter with 100% free project ownership transfer).</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" required>
+          <span><strong>Content Rights &amp; Legal Terms:</strong> I confirm I have the right to use my business photos/logos and accept the <a href="https://preview.nexuski.store/legal/#terms" target="_blank">B2B Terms</a> &amp; <a href="https://preview.nexuski.store/legal/#privacy" target="_blank">Privacy Policy</a>, including reviewing my contact and legal footer details before live launch.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Setup Brief (0 Upfront) &rarr;</button>
+    </div>
+  </form>
+
+  <!-- SUCCESS PANEL -->
+  <div class="success-panel" id="successPanel">
+    <h2 style="color:#34d399;margin-bottom:8px;">&#10003; Setup Brief Received!</h2>
+    <p style="color:#cbd5e1;font-size:0.95rem;">Thank you! Your website build is now in the queue with <strong>0 upfront</strong>. Dominik will send your finished live staging website within <strong>48 to 72 hours</strong> for your review.</p>
+    <div class="summary-pre" id="summaryBox"></div>
+    <div class="btn-row">
+      <button type="button" class="sec-btn" id="copySummaryBtn">Copy Brief Summary</button>
+      <a href="#" class="sec-btn" id="mailtoBackupBtn">Send Copy via Email App</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Croft Web Studio (Dominik Gross) &middot; <a href="https://preview.nexuski.store/legal/#imprint">Legal Notice</a> &middot; <a href="https://preview.nexuski.store/legal/#privacy">Privacy Policy</a> &middot; <a href="https://preview.nexuski.store/legal/#terms">B2B Terms</a>
+</footer>
+
+<script>
+  var PRICING = {
+    UK: { starter: '\u00a3350 one time', multi: '\u00a3890 one time', bot: '+\u00a3149 one time', care: '\u00a359/mo' },
+    US: { starter: '$449 one time', multi: '$1,090 one time', bot: '+$179 one time', care: '$69/mo' },
+    CA: { starter: 'CA$549 one time', multi: 'CA$1,290 one time', bot: '+CA$199 one time', care: 'CA$79/mo' },
+    AU: { starter: 'A$590 one time', multi: 'A$1,390 one time', bot: '+A$229 one time', care: 'A$89/mo' },
+    IE: { starter: '\u20ac395 one time', multi: '\u20ac990 one time', bot: '+\u20ac159 one time', care: '\u20ac65/mo' }
+  };
+  var currentRegion = 'UK';
+
+  function refreshUI() {
+    var p = PRICING[currentRegion];
+    document.getElementById('priceStarter').textContent = p.starter;
+    document.getElementById('priceMulti').textContent = p.multi;
+    document.getElementById('priceBot').textContent = p.bot;
+    document.getElementById('priceCare').textContent = p.care;
+
+    var pkg = document.querySelector('input[name="package"]:checked').value;
+    var care = document.querySelector('input[name="care"]:checked').value;
+
+    document.getElementById('cardStarter').classList.toggle('selected', pkg === 'starter');
+    document.getElementById('cardMulti').classList.toggle('selected', pkg === 'multi');
+    document.getElementById('cardCareManaged').classList.toggle('selected', care === 'managed');
+    document.getElementById('cardCareSelf').classList.toggle('selected', care === 'self');
+
+    var botFree = (pkg === 'multi' || care === 'managed');
+    document.getElementById('upsellBox').style.display = botFree ? 'none' : 'flex';
+    document.getElementById('botIncludedNote').style.display = botFree ? 'block' : 'none';
+
+    var ieField = document.getElementById('ieVatField');
+    var ieInput = document.getElementById('ieVat');
+    if (currentRegion === 'IE') {
+      ieField.style.display = 'block';
+      ieInput.required = true;
+    } else {
+      ieField.style.display = 'none';
+      ieInput.required = false;
+    }
+  }
+
+  document.querySelectorAll('.country-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.country-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentRegion = btn.getAttribute('data-region');
+      refreshUI();
+    });
+  });
+
+  document.querySelectorAll('input[name="package"], input[name="care"]').forEach(function(el) {
+    el.addEventListener('change', refreshUI);
+  });
+
+  // Pre-fill from URL params if provided (?region=US&biz=...)
+  var params = new URLSearchParams(window.location.search);
+  var urlReg = (params.get('region') || params.get('country') || '').toUpperCase();
+  if (PRICING[urlReg]) {
+    currentRegion = urlReg;
+    document.querySelectorAll('.country-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-region') === currentRegion);
+    });
+  }
+  if (params.get('biz')) document.getElementById('bizName').value = params.get('biz');
+  if (params.get('slug')) document.getElementById('bizUrl').value = 'https://preview.nexuski.store/' + params.get('slug') + '/';
+  refreshUI();
+
+  document.getElementById('onboardForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting Your Setup Brief...';
+
+    var p = PRICING[currentRegion];
+    var pkgVal = document.querySelector('input[name="package"]:checked').value;
+    var careVal = document.querySelector('input[name="care"]:checked').value;
+    var pkgLabel = pkgVal === 'multi' ? ('Full Multi Page (' + p.multi + ')') : ('Starter Single Page (' + p.starter + ')');
+    var botLabel = (pkgVal === 'multi' || careVal === 'managed')
+      ? 'Included FREE'
+      : (document.getElementById('addLeadBot').checked ? ('YES (' + p.bot + ')') : 'No');
+    var careLabel = careVal === 'managed' ? ('Managed Care Plan (' + p.care + ', 6-mo term)') : 'Self Managed (Transfer Project)';
+
+    var bizName = document.getElementById('bizName').value.trim();
+    var bizUrl = document.getElementById('bizUrl').value.trim();
+    var contactName = document.getElementById('contactName').value.trim();
+    var contactPhone = document.getElementById('contactPhone').value.trim();
+    var quoteEmail = document.getElementById('quoteEmail').value.trim();
+    var registrar = document.getElementById('registrar').value.trim() || 'Not specified';
+    var ieVat = document.getElementById('ieVat').value.trim();
+    var notes = document.getElementById('notes').value.trim() || 'None';
+
+    var summary = [
+      'NEW CLIENT ONBOARDING — CROFT WEB STUDIO',
+      'Region: ' + currentRegion,
+      'Business: ' + bizName,
+      'Website/URL: ' + bizUrl,
+      'Contact: ' + contactName + ' | ' + contactPhone,
+      'Quote Enquiries Email: ' + quoteEmail,
+      'Package: ' + pkgLabel,
+      'Lead Alert Bot: ' + botLabel,
+      'Hosting/Care: ' + careLabel,
+      'Registrar: ' + registrar,
+      ieVat ? ('EU VAT ID: ' + ieVat) : null,
+      'Notes/Legal: ' + notes,
+      'Confirmed: B2B Only + 0 Upfront + Safe MX DNS + Legal Terms Accepted'
+    ].filter(Boolean).join('\n');
+
+    var mailtoHref = 'mailto:dominik@croftwebstudio.com?subject=' +
+      encodeURIComponent('NEW WEBSITE ORDER: ' + bizName + ' (' + currentRegion + ')') +
+      '&body=' + encodeURIComponent(summary);
+    document.getElementById('mailtoBackupBtn').href = mailtoHref;
+    document.getElementById('summaryBox').textContent = summary;
+
+    try {
+      var res = await fetch('https://nexus-lead-alerts.grossdominik81.workers.dev/submit?slug=NEW-CLIENT-ONBOARD', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: contactName + ' (' + bizName + ')',
+          phone: contactPhone,
+          email: quoteEmail,
+          service: pkgLabel + ' | ' + careLabel,
+          message: summary
+        })
+      });
+      if (!res.ok) throw new Error('Worker status ' + res.status);
+    } catch (err) {
+      window.location.href = mailtoHref;
+    }
+
+    document.getElementById('onboardForm').style.display = 'none';
+    document.getElementById('successPanel').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('copySummaryBtn').addEventListener('click', function() {
+    navigator.clipboard.writeText(document.getElementById('summaryBox').textContent);
+    this.textContent = 'Copied!';
+  });
+</script>
+</body>
+</html>
