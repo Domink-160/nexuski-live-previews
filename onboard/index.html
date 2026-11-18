@@ -4,35 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>2-Minute Website Setup (£0 Upfront) | Croft Web Studio</title>
+  <title>Start Your Website Build (0 Upfront) | Croft Web Studio</title>
   <style>
     :root {
-      --bg: #0b1120;
-      --card: #111827;
-      --surface: #0f172a;
-      --border: #1e293b;
-      --text: #f1f5f9;
+      --bg: #050811;
+      --card-top: rgba(20, 29, 49, 0.88);
+      --card-bot: rgba(10, 15, 28, 0.96);
+      --surface: #080d1a;
+      --border: rgba(148, 163, 184, 0.14);
+      --border-hi: rgba(96, 165, 250, 0.55);
+      --text: #f8fafc;
       --muted: #94a3b8;
       --accent: #2563eb;
-      --accent-hover: #1d4ed8;
-      --ok: #10b981;
+      --accent-glow: #3b82f6;
+      --emerald: #10b981;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(900px 420px at 50% -80px, rgba(37, 99, 235, 0.24), transparent 70%),
+        radial-gradient(600px 320px at 85% 20%, rgba(16, 185, 129, 0.07), transparent 70%),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+      background-position: top center;
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 70px;
+      padding-bottom: 80px;
+      min-height: 100vh;
     }
     .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(5, 8, 17, 0.82);
       border-bottom: 1px solid var(--border);
-      background: rgba(11, 17, 32, 0.94);
-      padding: 15px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     }
     .topbar-inner {
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -41,17 +57,20 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
       font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: -0.01em;
       color: #fff;
       text-decoration: none;
     }
     .badge-c {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      background: var(--surface);
-      border: 1px solid #334155;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(145deg, #16223b, #0a1020);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 14px rgba(0,0,0,0.5);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -62,224 +81,416 @@
       content: "";
       width: 6px;
       height: 6px;
-      background: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 0 8px var(--accent-glow);
       position: absolute;
-      top: 4px;
-      right: 4px;
-      border-radius: 1px;
+      top: 5px;
+      right: 5px;
+      border-radius: 1.5px;
     }
     .pill-zero {
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
       color: #34d399;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 5px 11px;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.07));
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 14px rgba(16, 185, 129, 0.12);
+      padding: 6px 13px;
       border-radius: 999px;
     }
     main {
-      max-width: 760px;
-      margin: 32px auto 0;
-      padding: 0 18px;
+      max-width: 800px;
+      margin: 38px auto 0;
+      padding: 0 20px;
     }
     .hero {
-      margin-bottom: 24px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #60a5fa;
+      margin-bottom: 10px;
+    }
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 10px #3b82f6;
     }
     h1 {
-      font-size: 1.75rem;
-      color: #fff;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.75rem, 3.6vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 680px;
     }
     .steps-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 18px 0 24px;
+      gap: 12px;
+      margin: 24px 0 30px;
+      perspective: 900px;
     }
-    @media (max-width: 620px) { .steps-bar { grid-template-columns: 1fr; } }
+    @media (max-width: 650px) { .steps-bar { grid-template-columns: 1fr; } }
     .step-chip {
-      background: var(--card);
+      background: linear-gradient(180deg, rgba(24, 35, 58, 0.78) 0%, rgba(11, 17, 31, 0.92) 100%);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 0.86rem;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 14px 28px -10px rgba(0, 0, 0, 0.65);
+      border-radius: 14px;
+      padding: 15px 16px;
+      font-size: 0.85rem;
       color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
     }
-    .step-chip strong { color: #fff; display: block; margin-bottom: 2px; }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(37, 99, 235, 0.22);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      color: #93c5fd;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+    .step-chip strong {
+      color: #fff;
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+
+    /* 3D STUDIO ELEVATED CARDS */
     .card {
-      background: var(--card);
+      position: relative;
+      background: linear-gradient(180deg, var(--card-top) 0%, var(--card-bot) 100%);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
-      margin-bottom: 20px;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.11),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 24px 52px -14px rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(12px);
     }
     .section-title {
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 14px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 10px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: #fff;
+      margin-bottom: 16px;
     }
+    .sec-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #2563eb, #1d4ed8);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 12px rgba(37, 99, 235, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    /* COUNTRY TABS */
     .country-tabs {
-      display: flex;
+      display: inline-flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+      padding: 5px;
+      background: rgba(5, 8, 17, 0.75);
+      border: 1px solid var(--border);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+      border-radius: 12px;
       margin-bottom: 18px;
     }
     .country-btn {
-      background: var(--surface);
+      background: transparent;
       color: var(--muted);
-      border: 1px solid var(--border);
+      border: 1px solid transparent;
       padding: 7px 13px;
       border-radius: 8px;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.15s;
+      transition: all 0.18s ease;
     }
+    .country-btn:hover { color: #e2e8f0; }
     .country-btn.active {
-      background: rgba(37, 99, 235, 0.18);
+      background: linear-gradient(180deg, #2563eb, #1d4ed8);
       color: #fff;
-      border-color: var(--accent);
+      border-color: rgba(147, 197, 253, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 4px 12px rgba(37, 99, 235, 0.4);
     }
+
+    /* INTERACTIVE 3D TACTILE TILES */
+    .radio-group { display: grid; gap: 12px; }
+    .radio-card {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background:
+        radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgba(59, 130, 246, 0.11), transparent 65%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(8, 13, 26, 0.98) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 10px 24px -8px rgba(0, 0, 0, 0.65);
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .radio-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(148, 163, 184, 0.36);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 16px 32px -10px rgba(0, 0, 0, 0.78);
+    }
+    .radio-card.selected {
+      border-color: var(--border-hi);
+      background:
+        radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(59, 130, 246, 0.18), transparent 70%),
+        linear-gradient(180deg, rgba(23, 39, 74, 0.72) 0%, rgba(10, 17, 34, 0.96) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(147, 197, 253, 0.25),
+        0 0 0 1px rgba(37, 99, 235, 0.35),
+        0 16px 34px -10px rgba(29, 78, 216, 0.35);
+    }
+    .radio-card input[type="radio"] {
+      margin-top: 4px;
+      accent-color: var(--accent-glow);
+      transform: scale(1.2);
+      flex-shrink: 0;
+    }
+    .pkg-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .tag-pop {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      color: #34d399;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .pkg-price {
+      font-size: 0.96rem;
+      color: #93c5fd;
+      background: rgba(37, 99, 235, 0.16);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pkg-desc {
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    /* UPSELL & SMART STATUS BANNERS */
+    .upsell-box {
+      margin-top: 14px;
+      padding: 15px 17px;
+      border-radius: 13px;
+      border: 1px dashed rgba(96, 165, 250, 0.5);
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.12), rgba(15, 23, 42, 0.7));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      display: none;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .upsell-box input { margin-top: 4px; accent-color: var(--accent-glow); transform: scale(1.18); }
+    .status-banner {
+      margin-top: 13px;
+      padding: 11px 14px;
+      border-radius: 11px;
+      font-size: 0.85rem;
+      display: none;
+    }
+    .status-banner.emerald {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #6ee7b7;
+    }
+    .status-banner.info {
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(96, 165, 250, 0.28);
+      color: #bfdbfe;
+    }
+
+    /* RECESSED STUDIO INPUTS */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 15px;
     }
-    @media (max-width: 620px) { .grid-2 { grid-template-columns: 1fr; } }
-    .field { margin-bottom: 15px; }
+    @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+    .field { margin-bottom: 16px; }
     label.lbl {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: #cbd5e1;
       margin-bottom: 6px;
     }
-    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
       width: 100%;
-      padding: 11px 13px;
-      border-radius: 9px;
-      border: 1px solid #334155;
-      background: var(--surface);
-      color: #fff;
-      font-size: 0.95rem;
-      font-family: inherit;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .radio-group {
-      display: grid;
-      gap: 10px;
-    }
-    .radio-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-radius: 11px;
-      border: 1px solid #334155;
+      border: 1px solid rgba(148, 163, 184, 0.2);
       background: var(--surface);
-      cursor: pointer;
-      transition: 0.15s;
-    }
-    .radio-card:hover { border-color: #475569; }
-    .radio-card input { margin-top: 4px; accent-color: var(--accent); transform: scale(1.15); }
-    .radio-card.selected {
-      border-color: var(--accent);
-      background: rgba(37, 99, 235, 0.1);
-    }
-    .pkg-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65);
       color: #fff;
-      font-size: 0.96rem;
+      font-size: 0.94rem;
+      font-family: inherit;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
     }
-    .pkg-price { color: #60a5fa; font-weight: 800; white-space: nowrap; }
-    .pkg-desc { font-size: 0.86rem; color: var(--muted); margin-top: 3px; }
-    .upsell-box {
-      margin-top: 12px;
+    input::placeholder, textarea::placeholder { color: #64748b; }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-glow);
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.6), 0 0 0 3px rgba(37, 99, 235, 0.22);
+    }
+    .photo-helper {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 13px 15px;
-      border-radius: 10px;
-      border: 1px dashed #3b82f6;
-      background: rgba(37, 99, 235, 0.08);
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-      cursor: pointer;
+      margin-bottom: 16px;
+      font-size: 0.84rem;
+      color: #cbd5e1;
     }
-    .upsell-box input { margin-top: 4px; accent-color: var(--accent); transform: scale(1.15); }
-    .included-note {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: #34d399;
-      display: none;
-    }
-    .check-list { display: grid; gap: 11px; }
+    .photo-helper strong { color: #fff; }
+
+    /* CONFIRMATIONS & 3D CTA BUTTON */
+    .check-list { display: grid; gap: 12px; }
     .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 11px;
-      font-size: 0.87rem;
+      gap: 12px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      background: rgba(8, 13, 26, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      font-size: 0.86rem;
       color: #cbd5e1;
       cursor: pointer;
+      transition: border-color 0.15s;
     }
-    .check-item input { margin-top: 3px; accent-color: var(--accent); transform: scale(1.12); flex-shrink: 0; }
+    .check-item:hover { border-color: rgba(148, 163, 184, 0.25); }
+    .check-item input { margin-top: 3px; accent-color: var(--accent-glow); transform: scale(1.16); flex-shrink: 0; }
+    .check-item a { color: #60a5fa; }
+
     .submit-btn {
       width: 100%;
-      padding: 15px 20px;
-      border-radius: 11px;
-      border: none;
-      background: var(--accent);
+      padding: 16px 22px;
+      border-radius: 13px;
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 12px 28px -6px rgba(37, 99, 235, 0.65);
       color: #fff;
-      font-size: 1.03rem;
-      font-weight: 700;
+      font-size: 1.04rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
       cursor: pointer;
-      transition: 0.15s;
-      margin-top: 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      margin-top: 20px;
     }
-    .submit-btn:hover { background: var(--accent-hover); }
-    .submit-btn:disabled { opacity: 0.6; cursor: wait; }
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 16px 34px -6px rgba(37, 99, 235, 0.8);
+    }
+    .submit-btn:active { transform: translateY(1px); }
+    .submit-btn:disabled { opacity: 0.65; cursor: wait; }
+
     .success-panel {
       display: none;
-      background: var(--card);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      border-radius: 16px;
-      padding: 30px 26px;
+      background: linear-gradient(180deg, rgba(16, 42, 39, 0.8) 0%, rgba(10, 16, 29, 0.96) 100%);
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 24px 50px rgba(0,0,0,0.75);
+      border-radius: 20px;
+      padding: 32px 28px;
     }
     .summary-pre {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 15px;
       font-size: 0.85rem;
       color: #cbd5e1;
       white-space: pre-wrap;
-      margin: 16px 0;
+      margin: 18px 0;
     }
     .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
     .sec-btn {
-      background: var(--surface);
+      background: rgba(15, 23, 42, 0.9);
       color: #fff;
-      border: 1px solid #334155;
-      padding: 9px 15px;
-      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      padding: 10px 16px;
+      border-radius: 9px;
       font-size: 0.87rem;
+      font-weight: 600;
       cursor: pointer;
       text-decoration: none;
     }
     footer {
-      max-width: 760px;
-      margin: 26px auto 0;
-      padding: 0 18px;
+      max-width: 800px;
+      margin: 28px auto 0;
+      padding: 0 20px;
       text-align: center;
       font-size: 0.83rem;
       color: var(--muted);
@@ -301,21 +512,37 @@
 
 <main>
   <div class="hero">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> Bespoke Production Setup</div>
     <h1>Start Your Live Website Build</h1>
-    <p style="color:var(--muted);font-size:0.96rem;">Takes 2 minutes. Nothing is paid today. I will build your complete live website within 48 to 72 hours so you can review and approve every detail on your phone before paying a single penny.</p>
+    <p class="hero-sub">Takes 2 minutes with nothing paid upfront. I will build your finished live website within 48 to 72 hours so you can inspect and approve every detail on your phone before paying a single penny.</p>
+
     <div class="steps-bar">
-      <div class="step-chip"><strong>1. Fill Brief (0 Today)</strong>Choose your setup &amp; quote email below.</div>
-      <div class="step-chip"><strong>2. Review in 48 to 72h</strong>Inspect your finished site &amp; request any tweaks.</div>
-      <div class="step-chip"><strong>3. Approve &amp; Go Live</strong>Pay securely via Stripe right before domain switch.</div>
+      <div class="step-chip">
+        <span class="step-num">1</span>
+        <strong>Submit Brief (0 Today)</strong>
+        Pick your setup &amp; quote inbox below.
+      </div>
+      <div class="step-chip">
+        <span class="step-num">2</span>
+        <strong>Review in 48 to 72h</strong>
+        Check your finished live build &amp; request tweaks.
+      </div>
+      <div class="step-chip">
+        <span class="step-num">3</span>
+        <strong>Approve &amp; Connect</strong>
+        Pay securely via Stripe right before domain switch.
+      </div>
     </div>
   </div>
 
   <form id="onboardForm">
-    <!-- REGION & PACKAGE -->
+    <!-- 1. PACKAGE -->
     <div class="card">
       <div class="section-title">
-        <span>1. Select Your Region &amp; Website Package</span>
+        <span class="sec-badge">1</span>
+        <span>Select Your Region &amp; Website Package</span>
       </div>
+
       <div class="country-tabs" id="countryTabs">
         <button type="button" class="country-btn active" data-region="UK">UK (&pound; GBP)</button>
         <button type="button" class="country-btn" data-region="US">USA ($ USD)</button>
@@ -324,7 +551,7 @@
         <button type="button" class="country-btn" data-region="IE">Ireland (&euro; EUR)</button>
       </div>
 
-      <div class="radio-group" id="pkgGroup">
+      <div class="radio-group">
         <label class="radio-card selected" id="cardStarter">
           <input type="radio" name="package" value="starter" checked>
           <div style="width:100%;">
@@ -332,7 +559,7 @@
               <span>Starter Single Page Website</span>
               <span class="pkg-price" id="priceStarter">&pound;350 one time</span>
             </div>
-            <div class="pkg-desc">High converting mobile &amp; desktop single page site using your real photos, tap to call buttons, quote form, and safe domain connection. Paid only after approval.</div>
+            <div class="pkg-desc">High converting mobile &amp; desktop single page site built with your real photos, tap to call buttons, quote form, and safe domain connection. Paid only after approval.</div>
           </div>
         </label>
 
@@ -340,36 +567,49 @@
           <input type="radio" name="package" value="multi">
           <div style="width:100%;">
             <div class="pkg-head">
-              <span>Full Multi Page Website (Most Popular)</span>
+              <span>Full Multi Page Website <span class="tag-pop">Most Popular</span></span>
               <span class="pkg-price" id="priceMulti">&pound;890 one time</span>
             </div>
-            <div class="pkg-desc">Complete multi page company site (Home, Services, Projects/Gallery, About, Contact) + <strong>Instant Mobile Lead Alert System included FREE</strong>. Paid only after approval.</div>
+            <div class="pkg-desc">Complete multi page company website (Home, Services, Project Gallery, About, Contact) + <strong>Instant Mobile Lead Alert System permanently included FREE</strong>. Paid only after approval.</div>
           </div>
         </label>
       </div>
 
+      <!-- Only shown when Multi-Page is picked -->
+      <div class="status-banner emerald" id="botMultiBanner">
+        &#10003; <strong>Included Free Forever:</strong> Your Full Multi Page build permanently includes our Instant Mobile Lead Alert System at zero extra cost.
+      </div>
+
+      <!-- Only shown when Starter + Managed Care is picked -->
+      <div class="status-banner info" id="botCareBanner">
+        &#9432; <strong>Lead Alerts Covered via Care Plan:</strong> Because the Managed Care Plan is selected in Step 2 below, Instant Mobile Lead Alerts are active at no extra setup fee while on the plan (or switch Step 2 to Self Managed if you prefer the one time add on).
+      </div>
+
+      <!-- Only shown when Starter + Self-Managed is picked -->
       <label class="upsell-box" id="upsellBox">
         <input type="checkbox" id="addLeadBot">
         <div>
-          <strong style="color:#fff;font-size:0.9rem;">Add Instant Mobile Lead Alert System (<span id="priceBot">+&pound;149 one time</span>)</strong>
-          <div style="font-size:0.83rem;color:var(--muted);">Get every website quote enquiry pushed to your phone in 2 seconds with a 1 tap callback button so you beat competitors to the job.</div>
+          <strong style="color:#fff;font-size:0.92rem;">Add Instant Mobile Lead Alert System (<span id="priceBot">+&pound;149 one time</span>)</strong>
+          <div style="font-size:0.84rem;color:var(--muted);margin-top:2px;">Every website quote enquiry is pushed straight to your phone in 2 seconds with a 1 tap callback button so you reach customers first.</div>
         </div>
       </label>
-      <div class="included-note" id="botIncludedNote">&#10003; Instant Mobile Lead Alert System is included FREE with your selection!</div>
     </div>
 
-    <!-- HOSTING & CARE -->
+    <!-- 2. HOSTING & CARE -->
     <div class="card">
-      <div class="section-title"><span>2. Hosting &amp; Ongoing Care Preference (After Launch)</span></div>
+      <div class="section-title">
+        <span class="sec-badge">2</span>
+        <span>Hosting &amp; Ongoing Care Preference (After Launch)</span>
+      </div>
       <div class="radio-group">
         <label class="radio-card selected" id="cardCareManaged">
           <input type="radio" name="care" value="managed" checked>
           <div style="width:100%;">
             <div class="pkg-head">
-              <span>Hands Off Managed Care &amp; Hosting Plan</span>
+              <span>Hands Off Managed Care &amp; Hosting Plan <span class="tag-pop">Recommended</span></span>
               <span class="pkg-price" id="priceCare">&pound;59/mo</span>
             </div>
-            <div class="pkg-desc">We host, secure, and maintain everything for you, including small text/photo updates whenever you message us + <strong>Instant Mobile Lead Alerts included FREE</strong>. (6 month initial term, then cancel anytime with 100% free ownership transfer guarantee).</div>
+            <div class="pkg-desc">Fast hosting, SSL security, ongoing text/photo updates whenever you message us + <strong>Instant Mobile Lead Alerts active while subscribed</strong>. (6 month initial term, then cancel anytime with 100% free ownership transfer guarantee).</div>
           </div>
         </label>
 
@@ -380,15 +620,19 @@
               <span>Self Managed (100% Project Transfer to Your Account)</span>
               <span class="pkg-price">0/mo to us</span>
             </div>
-            <div class="pkg-desc">After your one time build payment, we transfer 100% ownership into your own free Framer account (you cover standard ~&pound;10/mo platform hosting directly).</div>
+            <div class="pkg-desc">After your one time build payment, we transfer 100% full ownership into your own free Framer account (you cover standard ~&pound;10/mo platform hosting directly).</div>
           </div>
         </label>
       </div>
     </div>
 
-    <!-- BUSINESS DETAILS -->
+    <!-- 3. BUSINESS DETAILS & PHOTOS -->
     <div class="card">
-      <div class="section-title"><span>3. Your Business &amp; Contact Details</span></div>
+      <div class="section-title">
+        <span class="sec-badge">3</span>
+        <span>Business Details, Photos &amp; Content</span>
+      </div>
+
       <div class="grid-2">
         <div class="field">
           <label class="lbl">Business / Trading Name *</label>
@@ -427,42 +671,54 @@
         <input type="text" id="ieVat" placeholder="e.g. IE1234567FA">
       </div>
 
+      <div class="photo-helper">
+        <strong>How Photos, Logos &amp; Texts Work (Zero Hassle):</strong> You do not need to hunt down files right now. We automatically pull your best project photos, logo, and service details from your current website, Google profile, and Facebook/Instagram page &mdash; and you can simply reply to our email (<span style="color:#93c5fd;">dominik@croftwebstudio.com</span>) anytime with extra job photos or text tweaks before launch.
+      </div>
+
       <div class="field">
-        <label class="lbl">Company Reg / VAT Number (if applicable) &amp; Any Specific Text/Service Tweaks</label>
-        <textarea id="notes" rows="3" placeholder="Optional: List any services to highlight, areas you cover, company number for the footer, or changes to the preview..."></textarea>
+        <label class="lbl">Optional Link to Extra Photos / Logo (Google Drive, Dropbox, Facebook/IG, or leave blank)</label>
+        <input type="text" id="photoLink" placeholder="Optional: Paste Drive/Dropbox/Social link or leave blank to use your existing photos">
+      </div>
+
+      <div class="field" style="margin-bottom:0;">
+        <label class="lbl">Company Reg / VAT Number (for Footer) &amp; Any Specific Services or Areas to Highlight</label>
+        <textarea id="notes" rows="3" placeholder="Optional: List key services, towns covered, company/license number for your legal footer, or tweaks to your preview..."></textarea>
       </div>
     </div>
 
-    <!-- AGREEMENTS -->
+    <!-- 4. AGREEMENTS -->
     <div class="card">
-      <div class="section-title"><span>4. Quick Confirmations (0 Paid Today)</span></div>
+      <div class="section-title">
+        <span class="sec-badge">4</span>
+        <span>Quick Confirmations (0 Paid Today)</span>
+      </div>
       <div class="check-list">
         <label class="check-item">
           <input type="checkbox" required>
-          <span><strong>Commercial B2B Client:</strong> I confirm I am ordering exclusively for a commercial business or trade (B2B), not as a private consumer.</span>
+          <span><strong>Commercial B2B Client:</strong> I confirm I am ordering strictly for a commercial business or trade (B2B), not as a private consumer.</span>
         </label>
         <label class="check-item">
           <input type="checkbox" required>
-          <span><strong>Zero Upfront &amp; Payment Timing:</strong> I understand nothing is paid today. Build time is 48 to 72 hours, and payment via Stripe is due once I approve the finished staging website, right before domain connection or project transfer.</span>
+          <span><strong>Zero Upfront &amp; Approval First:</strong> Nothing is paid today. Build turnaround is 48 to 72 hours, and payment via Stripe is due only once I approve the finished staging website, right before domain connection or project transfer.</span>
         </label>
         <label class="check-item">
           <input type="checkbox" required>
-          <span><strong>Safe Email DNS &amp; Care Plan Terms:</strong> I understand my existing business emails (MX records) will remain untouched. If I chose the Monthly Care Plan, I agree to the 6 month initial term (monthly cancellable thereafter with 100% free project ownership transfer).</span>
+          <span><strong>Safe Email DNS &amp; Care Plan Terms:</strong> Existing business emails (MX records) remain untouched. If I selected the Monthly Care Plan, I agree to the 6 month initial term (monthly cancellable thereafter with 100% free project ownership transfer).</span>
         </label>
         <label class="check-item">
           <input type="checkbox" required>
-          <span><strong>Content Rights &amp; Legal Terms:</strong> I confirm I have the right to use my business photos/logos and accept the <a href="https://preview.nexuski.store/legal/#terms" target="_blank">B2B Terms</a> &amp; <a href="https://preview.nexuski.store/legal/#privacy" target="_blank">Privacy Policy</a>, including reviewing my contact and legal footer details before live launch.</span>
+          <span><strong>Content Rights &amp; Legal Terms:</strong> I confirm I hold rights to my business photos/logos and accept the <a href="https://preview.nexuski.store/legal/#terms" target="_blank">B2B Terms</a> &amp; <a href="https://preview.nexuski.store/legal/#privacy" target="_blank">Privacy Policy</a>, including reviewing my contact and legal footer details before live launch.</span>
         </label>
       </div>
 
-      <button type="submit" class="submit-btn" id="submitBtn">Submit Setup Brief (0 Upfront) &rarr;</button>
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Website Setup Brief (0 Upfront) &rarr;</button>
     </div>
   </form>
 
   <!-- SUCCESS PANEL -->
   <div class="success-panel" id="successPanel">
     <h2 style="color:#34d399;margin-bottom:8px;">&#10003; Setup Brief Received!</h2>
-    <p style="color:#cbd5e1;font-size:0.95rem;">Thank you! Your website build is now in the queue with <strong>0 upfront</strong>. Dominik will send your finished live staging website within <strong>48 to 72 hours</strong> for your review.</p>
+    <p style="color:#cbd5e1;font-size:0.96rem;">Thank you! Your website build is now in production with <strong>0 upfront</strong>. Dominik will send your finished live staging website within <strong>48 to 72 hours</strong> for your review (and you can email any extra job photos anytime to <strong>dominik@croftwebstudio.com</strong>).</p>
     <div class="summary-pre" id="summaryBox"></div>
     <div class="btn-row">
       <button type="button" class="sec-btn" id="copySummaryBtn">Copy Brief Summary</button>
@@ -485,6 +741,15 @@
   };
   var currentRegion = 'UK';
 
+  // Interactive 3D spotlight tracking on selectable cards
+  document.querySelectorAll('.radio-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+  });
+
   function refreshUI() {
     var p = PRICING[currentRegion];
     document.getElementById('priceStarter').textContent = p.starter;
@@ -500,9 +765,9 @@
     document.getElementById('cardCareManaged').classList.toggle('selected', care === 'managed');
     document.getElementById('cardCareSelf').classList.toggle('selected', care === 'self');
 
-    var botFree = (pkg === 'multi' || care === 'managed');
-    document.getElementById('upsellBox').style.display = botFree ? 'none' : 'flex';
-    document.getElementById('botIncludedNote').style.display = botFree ? 'block' : 'none';
+    document.getElementById('botMultiBanner').style.display = (pkg === 'multi') ? 'block' : 'none';
+    document.getElementById('botCareBanner').style.display = (pkg === 'starter' && care === 'managed') ? 'block' : 'none';
+    document.getElementById('upsellBox').style.display = (pkg === 'starter' && care === 'self') ? 'flex' : 'none';
 
     var ieField = document.getElementById('ieVatField');
     var ieInput = document.getElementById('ieVat');
@@ -528,7 +793,6 @@
     el.addEventListener('change', refreshUI);
   });
 
-  // Pre-fill from URL params if provided (?region=US&biz=...)
   var params = new URLSearchParams(window.location.search);
   var urlReg = (params.get('region') || params.get('country') || '').toUpperCase();
   if (PRICING[urlReg]) {
@@ -551,9 +815,11 @@
     var pkgVal = document.querySelector('input[name="package"]:checked').value;
     var careVal = document.querySelector('input[name="care"]:checked').value;
     var pkgLabel = pkgVal === 'multi' ? ('Full Multi Page (' + p.multi + ')') : ('Starter Single Page (' + p.starter + ')');
-    var botLabel = (pkgVal === 'multi' || careVal === 'managed')
-      ? 'Included FREE'
-      : (document.getElementById('addLeadBot').checked ? ('YES (' + p.bot + ')') : 'No');
+    var botLabel = (pkgVal === 'multi')
+      ? 'Included FREE Forever (Multi-Page)'
+      : (careVal === 'managed'
+          ? 'Included FREE (Active via Care Plan)'
+          : (document.getElementById('addLeadBot').checked ? ('YES (' + p.bot + ')') : 'No (Standard Email Only)'));
     var careLabel = careVal === 'managed' ? ('Managed Care Plan (' + p.care + ', 6-mo term)') : 'Self Managed (Transfer Project)';
 
     var bizName = document.getElementById('bizName').value.trim();
@@ -562,6 +828,7 @@
     var contactPhone = document.getElementById('contactPhone').value.trim();
     var quoteEmail = document.getElementById('quoteEmail').value.trim();
     var registrar = document.getElementById('registrar').value.trim() || 'Not specified';
+    var photoLink = document.getElementById('photoLink').value.trim() || 'Pull from existing site / socials';
     var ieVat = document.getElementById('ieVat').value.trim();
     var notes = document.getElementById('notes').value.trim() || 'None';
 
@@ -576,6 +843,7 @@
       'Lead Alert Bot: ' + botLabel,
       'Hosting/Care: ' + careLabel,
       'Registrar: ' + registrar,
+      'Photos/Assets: ' + photoLink,
       ieVat ? ('EU VAT ID: ' + ieVat) : null,
       'Notes/Legal: ' + notes,
       'Confirmed: B2B Only + 0 Upfront + Safe MX DNS + Legal Terms Accepted'
